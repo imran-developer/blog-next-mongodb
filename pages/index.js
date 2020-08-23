@@ -1,65 +1,43 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-
+import {posts} from '../components/data' 
+import Header from '../components/header'
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className="flex-container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <main>
+        <Header />
+        {
+          posts.map((post) =>
+            <div className="flex mb-4" key={post.id}>
+              <div className="w-full">
+                <div className="rounded overflow-hidden shadow-lg">
+                  <div className="flex mb-4">
+                    <div className="w-1/16">
+                      <img className="w-32" src={post.image} alt={post.title} />
+                    </div>
+                    <div className="w-15/4">
+                      <div className="px-6 py-4">
+                        <div className="font-bold text-l mb-2">{post.title}</div>
+                        <p className="text-gray-700 text-base">
+                          {post.description}
+                        </p>
+                      </div>
+                      <div className="px-6 pt-4 pb-2">
+                        <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{post.publishedDate}</span>
+                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{post.author}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
+        </main>
     </div>
   )
 }
