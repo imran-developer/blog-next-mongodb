@@ -9,7 +9,7 @@ export const posts = [
         isFeatured: 1
     },{
         id : "second",
-        title: "Second blog",
+        title: "Secondblog",
         description: "Description for Second Blog",
         image: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
         author: "Author 2",
